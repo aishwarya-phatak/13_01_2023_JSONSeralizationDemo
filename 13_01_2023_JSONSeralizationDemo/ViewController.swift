@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        registerWithXIB()
+        fetchDataFromApi()
     }
     
     func registerWithXIB(){
@@ -33,8 +34,10 @@ class ViewController: UIViewController {
         let urlSession = URLSession(configuration: URLSessionConfiguration.default)
         
         var dataTask = urlSession.dataTask(with: request) { data, response, error in
-            let getJSONObjectArray = try! JSONSerialization.data(withJSONObject: dataTask) as! [[String : Any]]
-            
+            let getJSONObjectArray = try! JSONSerialization.jsonObject(with: data!) as! [[String : Any]]
+            print("========================")
+            print(response)
+            print("========================")
             for eachJSONObject in getJSONObjectArray{
                 let eachAlbumObject = eachJSONObject as! [String : Any]
                 let eachAlbumUserId = eachAlbumObject["userId"] as! Int
@@ -45,10 +48,6 @@ class ViewController: UIViewController {
             }
         }
         dataTask.resume()
-        
-        
     }
-
-
 }
 
