@@ -9,11 +9,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumTableViewCell" rowHeight="135" id="KGk-i7-Jjw" customClass="AlbumTableViewCell" customModule="_3_01_2023_JSONSeralizationDemo" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlbumTableViewCell" rowHeight="130" id="KGk-i7-Jjw" customClass="AlbumTableViewCell" customModule="_3_01_2023_JSONSeralizationDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taH-QJ-CBw">
@@ -40,7 +40,12 @@
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="130.76923076923077" y="20.971563981042653"/>
+            <connections>
+                <outlet property="idLabel" destination="YPc-Vu-JpJ" id="t5X-pd-6fg"/>
+                <outlet property="titleLabel" destination="PZz-SJ-8fE" id="PZT-SV-Tk8"/>
+                <outlet property="userIdlabel" destination="taH-QJ-CBw" id="Fts-Hn-RdQ"/>
+            </connections>
+            <point key="canvasLocation" x="-169.23076923076923" y="-58.293838862559241"/>
         </tableViewCell>
     </objects>
 </document>

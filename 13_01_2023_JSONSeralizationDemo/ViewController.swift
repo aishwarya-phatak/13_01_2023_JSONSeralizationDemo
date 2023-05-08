@@ -14,13 +14,18 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       registerWithXIB()
+        initViews()
+        registerWithXIB()
         fetchDataFromApi()
+    }
+    func initViews(){
+        self.albumTableView.dataSource = self
+        self.albumTableView.delegate = self
     }
     
     func registerWithXIB(){
        let uiNib = UINib(nibName: "AlbumTableViewCell", bundle: nil)
-        self.albumTableView.register(AlbumTableViewCell.self, forCellReuseIdentifier: "AlbumTableViewCell")
+        self.albumTableView.register(uiNib, forCellReuseIdentifier: "AlbumTableViewCell")
     }
     
     func fetchDataFromApi(){
@@ -46,6 +51,10 @@ class ViewController: UIViewController {
                 self.albums.append(Album(userId: eachAlbumUserId, id: eachAlbumId, title: eachAlbumTitle))
                 print("userid -- \(eachAlbumUserId) eachAlbumId -- \(eachAlbumId) title -- \(eachAlbumTitle)")
             }
+            
+            DispatchQueue.main.async {
+                self.albumTableView.reloadData()
+            }
         }
         dataTask.resume()
     }
@@ -54,19 +63,27 @@ class ViewController: UIViewController {
 
 extension ViewController : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        albums.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        print(indexPath.row)
+        
+     let albumTableViewCell =   self.albumTableView.dequeueReusableCell(withIdentifier: "AlbumTableViewCell", for: indexPath) as? AlbumTableViewCell
+        
+        //albumTableViewCell?.userIdlabel.text =   String(albums[indexPath.row].userId)
+        
+        albumTableViewCell?.userIdlabel.text = "1"
+        albumTableViewCell?.idLabel.text = String(albums[indexPath.row].id)
+        albumTableViewCell?.titleLabel.text = albums[indexPath.row].title
+        
+        return albumTableViewCell!
     }
 }
 
 extension ViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        <#code#>
+        return 135.0
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
-    }
+    
 }
